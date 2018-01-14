@@ -1,5 +1,9 @@
 FROM skegio/clojure:java8
 
+# Holen
+RUN wget https://github.com/holen-app/holen/releases/download/v0.3.0/holen_linux_amd64 -O /usr/local/bin/holen && \
+    chmod a+x /usr/local/bin/holen
+
 # Neovim and Vim 8.x
 RUN apt-get update && apt-get install -y  && \
     add-apt-repository ppa:jonathonf/vim && \
