@@ -4,9 +4,13 @@ FROM skegio/clojure:java8
 RUN wget https://github.com/holen-app/holen/releases/download/v0.3.0/holen_linux_amd64 -O /usr/local/bin/holen && \
     chmod a+x /usr/local/bin/holen
 
+# git annex
+RUN wget -O- http://neuro.debian.net/lists/xenial.us-tn.full > /etc/apt/sources.list.d/neurodebian.sources.list && \
+    apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9 && \
+    apt-get update && apt-get install -y git-annex-standalone
+
 # Neovim and Vim 8.x
-RUN apt-get update && apt-get install -y  && \
-    add-apt-repository ppa:jonathonf/vim && \
+RUN add-apt-repository ppa:jonathonf/vim && \
     add-apt-repository ppa:neovim-ppa/unstable && \
     apt-get update && apt-get install -y vim-nox neovim python-dev python-pip python3-dev python3-pip && \
     pip install neovim && \
