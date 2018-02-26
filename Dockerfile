@@ -17,7 +17,7 @@ RUN add-apt-repository ppa:jonathonf/vim && \
     pip3 install neovim
 
 # need the JDK variant for real Java compiles
-RUN apt update && apt install -y openjdk-8-jdk-headless
+RUN apt update && apt install -y openjdk-8-jdk-headless visualvm
 
 # protobuf compiler install
 RUN wget https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-linux-x86_64.zip -O /tmp/protoc.zip && \
@@ -32,4 +32,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get update && apt-get install -y nodejs yarn
 
 # other apps
-RUN apt-get update && apt-get install -y mongodb rsync
+RUN apt-get update && apt-get install -y mongodb rsync graphviz
+
+RUN echo "AddressFamily inet" >> /etc/ssh/sshd_config
