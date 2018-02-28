@@ -9,6 +9,10 @@ RUN wget -O- http://neuro.debian.net/lists/xenial.us-tn.full > /etc/apt/sources.
     apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9 && \
     apt-get update && apt-get install -y git-annex-standalone
 
+# tmux
+RUN add-apt-repository ppa:hnakamur/tmux && \
+    apt-get update && apt-get install -y tmux
+
 # Neovim and Vim 8.x
 RUN add-apt-repository ppa:jonathonf/vim && \
     add-apt-repository ppa:neovim-ppa/unstable && \
@@ -32,6 +36,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get update && apt-get install -y nodejs yarn
 
 # other apps
-RUN apt-get update && apt-get install -y mongodb rsync graphviz
+RUN apt-get update && apt-get install -y mongodb rsync graphviz bc
 
 RUN echo "AddressFamily inet" >> /etc/ssh/sshd_config
