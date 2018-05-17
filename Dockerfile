@@ -38,4 +38,13 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 # other apps
 RUN apt-get update && apt-get install -y mongodb rsync graphviz bc
 
+RUN apt-get update && apt-get install libssl-dev g++ -y && \
+    cd /root && git clone https://github.com/AGWA/git-crypt.git && cd git-crypt \
+    make && make install && \
+    cd .. && rm -rf git-crypt
+
+# planck
+RUN add-apt-repository ppa:mfikes/planck && \
+    apt-get update && apt-get install -y planck
+
 RUN echo "AddressFamily inet" >> /etc/ssh/sshd_config
