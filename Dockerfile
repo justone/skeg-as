@@ -45,7 +45,9 @@ RUN apt-get update && apt-get install libssl-dev g++ -y && \
     cd .. && rm -rf git-crypt
 
 # clojure 1.9
-RUN wget -O- https://download.clojure.org/install/linux-install-1.9.0.381.sh | bash -
+RUN wget https://download.clojure.org/install/linux-install-1.9.0.381.sh -O linux-install-1.9.0.381.sh && \
+    chmod +x linux-install-1.9.0.381.sh && \
+    ./linux-install-1.9.0.381.sh
 
 # planck
 RUN add-apt-repository ppa:mfikes/planck && \
