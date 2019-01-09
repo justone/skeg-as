@@ -37,7 +37,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get update && apt-get install -y nodejs yarn
 
 # other apps
-RUN apt-get update && apt-get install -y mongodb rsync graphviz bc
+RUN apt-get update && apt-get install -y mongodb rsync graphviz bc telnet
 
 RUN apt-get update && apt-get install libssl-dev g++ -y && \
     cd /root && git clone https://github.com/AGWA/git-crypt.git && cd git-crypt \
@@ -45,9 +45,9 @@ RUN apt-get update && apt-get install libssl-dev g++ -y && \
     cd .. && rm -rf git-crypt
 
 # clojure 1.9
-RUN wget https://download.clojure.org/install/linux-install-1.9.0.381.sh -O linux-install-1.9.0.381.sh && \
-    chmod +x linux-install-1.9.0.381.sh && \
-    ./linux-install-1.9.0.381.sh
+RUN wget https://download.clojure.org/install/linux-install-1.10.0.411.sh -O linux-install-1.10.0.411.sh && \
+    chmod +x linux-install-1.10.0.411.sh && \
+    ./linux-install-1.10.0.411.sh
 
 # planck
 RUN add-apt-repository ppa:mfikes/planck && \
