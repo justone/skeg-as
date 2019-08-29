@@ -17,7 +17,7 @@ RUN add-apt-repository ppa:hnakamur/tmux && \
 # Neovim and Vim 8.x
 RUN add-apt-repository ppa:jonathonf/vim && \
     add-apt-repository ppa:neovim-ppa/unstable && \
-    apt-get update && apt-get install -y vim-nox neovim python-dev python-pip python3-dev python3-pip && \
+    apt-get update && apt-get install -y vim-nox neovim python-dev python-pip python3-dev python3-pip python3-venv && \
     pip install neovim && \
     pip3 install neovim
 
@@ -37,7 +37,9 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get update && apt-get install -y nodejs yarn
 
 # other apps
-RUN apt-get update && apt-get install -y mongodb rsync graphviz bc telnet
+RUN apt-get update && \
+    apt-get install -y mongodb rsync graphviz bc telnet whois dnsutils && \
+    npm install -g underscore-cli
 
 RUN apt-get update && apt-get install libssl-dev g++ -y && \
     cd /root && git clone https://github.com/AGWA/git-crypt.git && cd git-crypt \
