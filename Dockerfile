@@ -10,10 +10,6 @@ RUN wget -O- http://neuro.debian.net/lists/xenial.us-tn.full > /etc/apt/sources.
     apt-key add /root/neuro.debian.key && rm /root/neuro.debian.key && \
     apt-get update && apt-get install -y git-annex-standalone
 
-# tmux
-RUN add-apt-repository ppa:hnakamur/tmux && \
-    apt-get update && apt-get install -y tmux
-
 # Neovim and Vim 8.x
 RUN add-apt-repository ppa:jonathonf/vim && \
     add-apt-repository ppa:neovim-ppa/unstable && \
@@ -21,8 +17,8 @@ RUN add-apt-repository ppa:jonathonf/vim && \
     pip install neovim && \
     pip3 install neovim
 
-# need the JDK variant for real Java compiles
-RUN apt update && apt install -y openjdk-8-jdk-headless visualvm
+# need visualvm
+RUN apt update && apt install -y visualvm
 
 # protobuf compiler install
 RUN wget https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-linux-x86_64.zip -O /tmp/protoc.zip && \
@@ -45,11 +41,6 @@ RUN apt-get update && apt-get install libssl-dev g++ -y && \
     cd /root && git clone https://github.com/AGWA/git-crypt.git && cd git-crypt \
     make && make install && \
     cd .. && rm -rf git-crypt
-
-# clojure 1.9
-RUN wget https://download.clojure.org/install/linux-install-1.10.0.411.sh -O linux-install-1.10.0.411.sh && \
-    chmod +x linux-install-1.10.0.411.sh && \
-    ./linux-install-1.10.0.411.sh
 
 # planck
 RUN add-apt-repository ppa:mfikes/planck && \
