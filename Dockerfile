@@ -38,7 +38,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 
 # other apps
 RUN apt-get update && \
-    apt-get install -y mongodb rsync graphviz bc telnet whois dnsutils && \
+    apt-get install -y mongodb rsync graphviz bc telnet whois dnsutils netcat-openbsd && \
     npm install -g underscore-cli
 
 RUN apt-get update && apt-get install libssl-dev g++ -y && \
