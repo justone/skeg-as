@@ -1,4 +1,4 @@
-FROM skegio/clojure:java8
+FROM skegio/clojure:java11
 
 # Holen
 RUN wget https://github.com/holen-app/holen/releases/download/v0.3.0/holen_linux_amd64 -O /usr/local/bin/holen && \
