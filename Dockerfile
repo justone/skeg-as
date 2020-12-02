@@ -41,7 +41,7 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
 
 # other apps
 RUN apt-get update && \
-    apt-get install -y mongodb rsync graphviz bc telnet whois dnsutils netcat-openbsd iproute2 && \
+    apt-get install -y mongodb rsync graphviz bc telnet whois dnsutils netcat-openbsd iproute2 kafkacat && \
     npm install -g underscore-cli
 
 RUN apt-get update && apt-get install libssl-dev g++ -y && \
