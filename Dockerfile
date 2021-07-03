@@ -16,9 +16,9 @@ RUN add-apt-repository ppa:jonathonf/vim && \
 
 # Neovim
 RUN apt-get update && apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip python-dev python-pip python3-dev python3-pip python3-venv && \
-    wget https://github.com/neovim/neovim/archive/v0.4.3.tar.gz && \
-    tar -xzvf v0.4.3.tar.gz && \
-    cd neovim-0.4.3 && \
+    wget https://github.com/neovim/neovim/archive/v0.5.0.tar.gz && \
+    tar -xzvf v0.5.0.tar.gz && \
+    cd neovim-0.5.0 && \
     make CMAKE_BUILD_TYPE=Release && \
     make install && \
     pip install neovim && \
